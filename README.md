@@ -1,4 +1,3 @@
-# security-master-sql
 # Security Master SQL Project
 
 A mock investment data operations project built to demonstrate security master 
