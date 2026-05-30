@@ -20,3 +20,23 @@ INSERT INTO securities VALUES
 ('SEC008', 'Cobalt Logistics Revolver', 'bank_loan', NULL, '2029-07-22', 94.00, '2026-05-23', 'MARKIT'),
 ('SEC009', 'Vantage Health 5.75% 2031', 'bond', 5.75, '2031-08-15', 95.50, '2026-05-28', 'BVAL'),
 ('SEC010', 'Lakeside Consumer ABS 2022-1', 'abs', 4.8, '2029-05-05', 88.00, '2026-05-28', NULL);
+
+sql-- Q1: Missing price report
+SELECT security_id, name, asset_type
+FROM securities
+WHERE price IS NULL;
+
+-- Q2: Stale price flag (older than 2 days)
+SELECT security_id, name, price_date, pricing_source
+FROM securities
+WHERE price_date < date('2026-05-26');
+
+-- Q3: Coverage gap report (no pricing source)
+SELECT security_id, name, asset_type
+FROM securities
+WHERE pricing_source IS NULL;
+
+-- Q4: Portfolio composition by asset type
+SELECT asset_type, COUNT(*) AS count, ROUND(AVG(price), 2) AS avg_price
+FROM securities
+GROUP BY asset_type;
