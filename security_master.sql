@@ -21,7 +21,7 @@ INSERT INTO securities VALUES
 ('SEC009', 'Vantage Health 5.75% 2031', 'bond', 5.75, '2031-08-15', 95.50, '2026-05-28', 'BVAL'),
 ('SEC010', 'Lakeside Consumer ABS 2022-1', 'abs', 4.8, '2029-05-05', 88.00, '2026-05-28', NULL);
 
-sql-- Q1: Missing price report
+-- Q1: Missing price report
 SELECT security_id, name, asset_type
 FROM securities
 WHERE price IS NULL;
